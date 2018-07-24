@@ -8,8 +8,14 @@ class App extends Component {
 
   state = {
     userName: undefined,
-    rank: undefined,
     icon: undefined,
+    rank: undefined,
+    rankIcon: undefined,
+    timePlayed: undefined,
+    gamesPlayed: undefined,
+    gamesWon: undefined,
+    gamesLost: undefined,
+    gamesTied: undefined,
     mostPlayed: undefined,
     error: undefined
   }
@@ -24,8 +30,14 @@ class App extends Component {
     console.log(data);
     this.setState({
       userName: data.name,
-      rank: data.rating,
       icon: data.icon,
+      rank: data.rating,
+      rankIcon: data.ratingIcon,
+      timePlayed: data.competitiveStats.careerStats.allHeroes.game.timePlayed,
+      gamesPlayed: data.competitiveStats.careerStats.allHeroes.game.gamesPlayed,
+      gamesWon: data.competitiveStats.careerStats.allHeroes.game.gamesWon,
+      gamesLost: data.competitiveStats.careerStats.allHeroes.game.gamesLost,
+      gamesTied: data.competitiveStats.careerStats.allHeroes.game.gamesTied,
       mostPlayed: data.competitiveStats.topHeroes,
       error: ''
     });
@@ -37,8 +49,14 @@ class App extends Component {
         <SearchForm getStats={this.getStats}/>
         <Stats
           userName={this.state.userName}
-          rank={this.state.rank}
           icon={this.state.icon}
+          rank={this.state.rank}
+          rankIcon={this.state.rankIcon}
+          timePlayed={this.state.timePlayed}
+          gamesPlayed={this.state.gamesPlayed}
+          gamesWon={this.state.gamesWon}
+          gamesLost={this.state.gamesLost}
+          gamesTied={this.state.gamesTied}
           mostPlayed={this.state.mostPlayed}
           error={this.state.error}
         />
