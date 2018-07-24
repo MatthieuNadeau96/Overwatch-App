@@ -1,3 +1,49 @@
 .App {
   text-align: center;
+  background: skyblue;
+  width: 100%;
+  height: 100vh;
+}
+
+.App form {
+  float: right;
+  height: 20px;
+}
+
+.App input {
+  display: inline-block;
+  margin: 5px;
+  padding: 5px 10px;
+  border: none;
+}
+
+.App button {
+  background: yellow;
+  border: none;
+  padding: 5px 10px;
+}
+
+.Statistics {
+  display: flex;
+  align-self: center;
+  background: lightgrey;
+}
+
+.Statistics .PersonalInfo {
+  background: salmon;
+  display: flex;
+  flex-direction: row;
+}
+.Statistics .playerIcon {
+  height: 68px;
+  width: 68px;
+}
+
+.Statistics .CompetitiveInfo {
+  background: teal;
+}
+
+.Statistics .rankIcon {
+  height: 34px;
+  width: 34px;
 }

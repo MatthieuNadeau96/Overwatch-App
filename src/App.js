@@ -27,25 +27,41 @@ class App extends Component {
     const api_call = await fetch('http://ovrstat.com/stats/pc/us/' + userName + '-' + userTag);
     // const api_call = await fetch('http://ovrstat.com/stats/pc/us/Matthieu-11302');
     const data = await api_call.json();
-    console.log(data);
-    this.setState({
-      userName: data.name,
-      icon: data.icon,
-      rank: data.rating,
-      rankIcon: data.ratingIcon,
-      timePlayed: data.competitiveStats.careerStats.allHeroes.game.timePlayed,
-      gamesPlayed: data.competitiveStats.careerStats.allHeroes.game.gamesPlayed,
-      gamesWon: data.competitiveStats.careerStats.allHeroes.game.gamesWon,
-      gamesLost: data.competitiveStats.careerStats.allHeroes.game.gamesLost,
-      gamesTied: data.competitiveStats.careerStats.allHeroes.game.gamesTied,
-      mostPlayed: data.competitiveStats.topHeroes,
-      error: ''
-    });
+    if (userName && userTag) {
+      console.log(data);
+      this.setState({
+        userName: data.name,
+        icon: data.icon,
+        rank: data.rating,
+        rankIcon: data.ratingIcon,
+        timePlayed: data.competitiveStats.careerStats.allHeroes.game.timePlayed,
+        gamesPlayed: data.competitiveStats.careerStats.allHeroes.game.gamesPlayed,
+        gamesWon: data.competitiveStats.careerStats.allHeroes.game.gamesWon,
+        gamesLost: data.competitiveStats.careerStats.allHeroes.game.gamesLost,
+        gamesTied: data.competitiveStats.careerStats.allHeroes.game.gamesTied,
+        mostPlayed: data.competitiveStats.topHeroes,
+        error: ''
+      });
+    } else {
+      this.setState({
+        userName: undefined,
+        icon: undefined,
+        rank: undefined,
+        rankIcon: undefined,
+        timePlayed: undefined,
+        gamesPlayed: undefined,
+        gamesWon: undefined,
+        gamesLost: undefined,
+        gamesTied: undefined,
+        mostPlayed: undefined,
+        error: 'Please enter your name and battletag.'
+      });
+    }
   }
 
   render() {
     return (
-      <div>
+      <div className="App">
         <SearchForm getStats={this.getStats}/>
         <Stats
           userName={this.state.userName}
