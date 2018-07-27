@@ -4,3 +4,8 @@ body {
   font-family: sans-serif;
   text-align: center;
 }
+
+#root {
+  display: flex;
+  justify-content: center;
+}
